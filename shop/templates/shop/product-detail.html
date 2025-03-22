@@ -9,11 +9,11 @@
                         <div class="swiper-container theme-slider position-lg-absolute all-0"
                              data-swiper='{"autoHeight":true,"spaceBetween":{{ product.images.count }},"loop":true,"loopedSlides":{{ product.images.count }},"thumb":{"spaceBetween":{{ product.images.count }},"slidesPerView":{{ product.images.count }},"loop":true,"freeMode":true,"grabCursor":true,"loopedSlides":{{ product.images.count }},"centeredSlides":true,"slideToClickedSlide":true,"watchSlidesVisibility":true,"watchSlidesProgress":true,"parent":"#galleryTop"},"slideToClickedSlide":true}'>
                             <div class="swiper-wrapper h-100">
-                                {% for image in product.images.all %}
-                                    <div class="swiper-slide h-100"><img class="rounded-1 fit-cover h-100 w-100"
-                                                                         src="{{ image.image.url }}"
-                                                                         alt=""/></div>
-                                {% endfor %}
+{#                                {% for image in product.images.all %}#}
+{#                                    <div class="swiper-slide h-100"><img class="rounded-1 fit-cover h-100 w-200"#}
+{#                                                                         src="{{ image.image.url }}"#}
+{#                                                                         alt=""/></div>#}
+{#                                {% endfor %}#}
                             </div>
                             <div class="swiper-nav">
                                 <div class="swiper-button-next swiper-button-white"></div>

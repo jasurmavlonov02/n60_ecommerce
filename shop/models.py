@@ -41,6 +41,10 @@ class Product(models.Model):
         print(primary_image)
         return primary_image.image.url
 
+    @property
+    def attributes(self):
+        return self.product_attributes.all()
+
     def __str__(self):
         return self.name
 
@@ -56,3 +60,27 @@ class Images(models.Model):
 
     class Meta:
         verbose_name_plural = "Images"
+
+
+class Attribute(models.Model):
+    attribute_key = models.CharField(max_length=200, unique=True)
+
+    def __str__(self):
+        return self.attribute_key
+
+
+class AttributeValue(models.Model):
+    attribute_value = models.CharField(max_length=200, unique=True)
+
+    def __str__(self):
+        return self.attribute_value
+
+
+class ProductAttribute(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='product_attributes')
+    attribute_key_id = models.ForeignKey(Attribute, on_delete=models.CASCADE)
+    attribute_value_id = models.ForeignKey(AttributeValue, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.product.name} {self.attribute_key_id.attribute_key} {self.attribute_value_id.attribute_value}'
+# x_object : ProductAttribute = product.product_attributes.all()
