@@ -1,6 +1,7 @@
 from decimal import Decimal
 
 from django.db import models
+from django.utils.text import slugify
 
 
 # Create your models here.
@@ -9,6 +10,12 @@ from django.db import models
 class Category(models.Model):
     title = models.CharField(max_length=200, unique=True)
     image = models.ImageField(upload_to='category/images/')
+    slug = models.SlugField(max_length=255, null=True, blank=True)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super(Category, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.title
