@@ -108,7 +108,7 @@
                             </div>
                         </a>
                             <ul class="nav collapse false" id="dashboard">
-                                <li class="nav-item"><a class="nav-link" href="{% url 'index' %}"
+                                <li class="nav-item"><a class="nav-link" href="{% url 'shop:index' %}"
                                                         aria-expanded="false">
                                     <div class="d-flex align-items-center"><span
                                             class="nav-link-text ps-1">Default</span>
@@ -2312,6 +2312,8 @@
             {% block product_list_content %}
             {% endblock %}
             {% block product_detail_content %}
+            {% endblock %}
+            {% block customer_content %}
             {% endblock %}
             <footer class="footer">
                 <div class="row g-0 justify-content-between fs--1 mt-4 mb-3">
